@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isesw - PT Ises Solusi Teknologi</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans & Fira Code -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           VARIABLES & RESET
+        ========================================= */
+        :root {
+            --primary: #f97316;
+            --primary-dark: #ea580c;
+            --primary-light: #fff7ed;
+            --dark: #0f172a;
+            --dark-surface: #1e293b;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 40px -10px rgba(15, 23, 42, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .orange {
+            color: var(--primary);
+        }
+
+        /* =========================================
+           BUTTONS & SECTION HEADERS
+        ========================================= */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.25);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(249, 115, 22, 0.35);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--dark);
+            border-color: var(--border);
+        }
+
+        .hero .btn-outline {
+            color: var(--white);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            margin-bottom: 14px;
+        }
+
+        .section-header h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* =========================================
+           HEADER & NAVBAR
+        ========================================= */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: var(--primary);
+            padding: 4px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--white);
+            line-height: 1.1;
+            transition: var(--transition);
+        }
+
+        .logo-sub {
+            font-size: 0.72rem;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        .header.scrolled .logo-main {
+            color: var(--dark);
+        }
+
+        .navbar ul {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .navbar a {
+            color: #cbd5e1;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 6px 0;
+            transition: var(--transition);
+        }
+
+        .header.scrolled .navbar a {
+            color: var(--text-main);
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--primary) !important;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .navbar a:hover::after,
+        .navbar a.active::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        .header.scrolled .menu-toggle {
+            color: var(--dark);
+        }
+
+        /* =========================================
+           HERO SECTION (ENTERPRISE GRADE)
+        ========================================= */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 130px 0 90px;
+            background-color: var(--dark);
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .hero-gradient {
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.22) 0%, transparent 70%);
+            filter: blur(60px);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 24px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-company {
+            color: var(--primary);
+        }
+
+        .hero-year {
+            color: #94a3b8;
+            padding-left: 12px;
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-title {
+            font-size: 3.3rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+
+        .hero-title .title-line {
+            display: block;
+        }
+
+        .hero-title .highlight {
+            color: var(--primary);
+        }
+
+        .hero-description {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            margin-bottom: 36px;
+            max-width: 560px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            padding: 24px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 36px;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        .trust-badge i {
+            color: var(--primary);
+        }
+
+        /* Hero Showcase Cards */
+        .hero-showcase {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .showcase-card {
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 14px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .card-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .card-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ef4444;
+        }
+
+        .card-dots span:nth-child(2) { background: #f59e0b; }
+        .card-dots span:nth-child(3) { background: #10b981; }
+
+        .card-title {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .code-line {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.88rem;
+            margin-bottom: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .code-prompt {
+            color: var(--primary);
+        }
+
+        .code-line.success .code-prompt,
+        .code-line.success .code-command {
+            color: #10b981;
+        }
+
+        .code-progress {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 16px;
+        }
+
+        .progress-bar {
+            width: 85%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), #fb923c);
+            border-radius: 4px;
+            animation: pulseWidth 3s infinite alternate;
+        }
+
+        @keyframes pulseWidth {
+            from { width: 65%; }
+            to { width: 96%; }
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-stack span {
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .card-tertiary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .metric {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .metric-label {
+            display: block;
+            font-size: 0.78rem;
+            color: #94a3b8;
+            margin-bottom: 4px;
+        }
+
+        .metric-value {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .floating-elem {
+            position: absolute;
+            width: 46px;
+            height: 46px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .elem-1 { top: -18px; right: -14px; }
+        .elem-2 { bottom: 95px; left: -20px; animation-delay: 1.2s; background: #0284c7; }
+        .elem-3 { bottom: -16px; right: 24px; animation-delay: 2.2s; background: #10b981; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: #94a3b8;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .scroll-line {
+            width: 2px;
+            height: 28px;
+            background: linear-gradient(to bottom, var(--primary), transparent);
+        }
+
+        /* =========================================
+           SERVICES SECTION
+        ========================================= */
+        .services {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 36px 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(249, 115, 22, 0.3);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 24px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .service-tags span {
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            background: var(--bg-light);
+            color: var(--text-main);
+            border-radius: 6px;
+        }
+
+        /* =========================================
+           ABOUT SECTION
+        ========================================= */
+        .about {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 460px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            background-color: #e2e8f0;
+        }
+
+        .about-exp {
+            position: absolute;
+            bottom: -24px;
+            right: -24px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 24px 30px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 15px 30px rgba(249, 115, 22, 0.35);
+        }
+
+        .exp-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .exp-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .about-content h2 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+
+        .about-desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+        }
+
+        .about-points {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 36px;
+        }
+
+        .point {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .point i {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .point-text h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .point-text p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        .about-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        /* =========================================
+           PROJECTS SECTION
+        ========================================= */
+        .projects {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-banner {
+            height: 190px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: var(--white);
+            position: relative;
+        }
+
+        .project-category {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .project-banner i {
+            font-size: 2.8rem;
+            opacity: 0.9;
+        }
+
+        .project-body {
+            padding: 28px;
+        }
+
+        .project-body h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .project-body p {
+            font-size: 0.94rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-tech span {
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 6px;
+        }
+
+        .projects-footer {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* =========================================
+           CONTACT & LOCATION SECTION
+        ========================================= */
+        .contact {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .contact-cards-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .contact-card-item {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .contact-card-item:hover {
+            background: var(--white);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(249, 115, 22, 0.3);
+        }
+
+        .card-icon {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 18px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .contact-card-item h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .contact-detail {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.98rem;
+            margin-bottom: 4px;
+        }
+
+        .contact-info {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .card-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--white);
+            color: var(--dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .card-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .location-section {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .location-header {
+            padding: 24px 32px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .location-header > div:first-child {
+            display: flex;
+            align-items: center;
+        }
+
+        .location-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-right: 16px;
+        }
+
+        .location-title h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .location-title p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .location-hours {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-main);
+            background: var(--bg-light);
+            padding: 10px 18px;
+            border-radius: 50px;
+        }
+
+        .location-hours i {
+            color: var(--primary);
+        }
+
+        .map-wrapper {
+            position: relative;
+            height: 400px;
+        }
+
+        .map-overlay {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+        }
+
+        .map-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--dark);
+            color: var(--white);
+            padding: 12px 22px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        .map-button:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+        .footer {
+            background: var(--dark);
+            color: #cbd5e1;
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 40px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: var(--primary);
+            padding: 6px;
+            margin-bottom: 18px;
+        }
+
+        .footer-col p {
+            font-size: 0.92rem;
+            color: #94a3b8;
+            margin-bottom: 24px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+            font-size: 0.92rem;
+        }
+
+        .footer-col ul a {
+            color: #94a3b8;
+            transition: var(--transition);
+        }
+
+        .footer-col ul a:hover {
+            color: var(--primary);
+            padding-left: 4px;
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #94a3b8;
+        }
+
+        .footer-contact i {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            padding-top: 26px;
+            text-align: center;
+            font-size: 0.88rem;
+            color: #64748b;
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN
+        ========================================= */
+        @media (max-width: 992px) {
+            .hero-grid,
+            .about-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.6rem;
+            }
+
+            .about-exp {
+                right: 20px;
+                bottom: 20px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .navbar {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                background: var(--dark);
+                padding: 30px 24px;
+                transition: var(--transition);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .navbar.active {
+                left: 0;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .navbar a {
+                color: var(--white) !important;
+                font-size: 1.1rem;
+            }
+
+            .hero-stats {
+                gap: 24px;
+            }
+
+            .section-header h2 {
+                font-size: 1.9rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <img src="logo.png" alt="Isesw Logo" class="logo-img" onerror="this.src='https://placehold.co/80x80/f97316/ffffff?text=IS'">
+                <div class="logo-text">
+                    <span class="logo-main">ISESW</span>
+                    <span class="logo-sub">PT Ises Solusi Teknologi</span>
+                </div>
+            </a>
+            <nav class="navbar" id="navbar">
+                <ul>
+                    <li><a href="#home" class="active">Beranda</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#projects">Proyek</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section - Enterprise Grade -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-pattern"></div>
+            <div class="hero-gradient"></div>
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Left Content -->
+                <div class="hero-content">
+                    <div class="hero-meta">
+                        <span class="hero-company">PT ISES SOLUSI TEKNOLOGI</span>
+                        <span class="hero-year">Est. 2019</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        <span class="title-line">Engineering</span>
+                        <span class="title-line highlight">Digital Solutions</span>
+                        <span class="title-line">for Forward-Thinking</span>
+                        <span class="title-line">Businesses</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Kami merancang dan membangun perangkat lunak enterprise, sistem terintegrasi, 
+                        dan aplikasi mobile dengan standar industri tertinggi. Berlokasi di Bitung, 
+                        melayani skala nasional.
+                    </p>
+
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">8+</span>
+                            <span class="stat-label">Years of Excellence</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">200+</span>
+                            <span class="stat-label">Successful Projects</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Active Partners</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="https://wa.me/6285240344441" class="btn btn-primary" target="_blank">
+                            <span>Konsultasi</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#services" class="btn btn-outline">
+                            <span>Layanan kami</span>
+                        </a>
+                    </div>
+
+                    <div class="hero-trust">
+                        <div class="trust-badge">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>ISO 27001 Certified</span>
+                        </div>
+                        <div class="trust-badge">
+                            <i class="fas fa-lock"></i>
+                            <span>Data Protection</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content - Visual Showcase -->
+                <div class="hero-showcase">
+                    <div class="showcase-card card-main">
+                        <div class="card-header">
+                            <div class="card-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <span class="card-title">system@isesw:~$</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="code-line">
+                                <span class="code-prompt">$</span>
+                                <span class="code-command">deploy --production</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-prompt">&gt;</span>
+                                <span class="code-command">Initializing secure connection...</span>
+                            </div>
+                            <div class="code-line success">
+                                <span class="code-prompt">✓</span>
+                                <span class="code-command">System ready</span>
+                            </div>
+                            <div class="code-progress">
+                                <div class="progress-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="showcase-card card-secondary">
+                        <div class="tech-stack">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>Python</span>
+                            <span>Flutter</span>
+                            <span>AWS</span>
+                        </div>
+                    </div>
+
+                    <div class="showcase-card card-tertiary">
+                        <div class="metric">
+                            <span class="metric-label">Uptime</span>
+                            <span class="metric-value">99.9%</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Response</span>
+                            <span class="metric-value">&lt;100ms</span>
+                        </div>
+                    </div>
+
+                    <!-- Floating Elements -->
+                    <div class="floating-elem elem-1">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="floating-elem elem-2">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="floating-elem elem-3">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span class="scroll-text">Explore</span>
+            <span class="scroll-line"></span>
+        </div>
+    </section>
+
+    <!-- Layanan Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Layanan</span>
+                <h2>Solusi <span class="orange">Teknologi</span> Kami</h2>
+                <p>Kami menyediakan layanan IT lengkap untuk membantu transformasi digital bisnis Anda</p>
+            </div>
+            <div class="services-grid" id="servicesGrid"></div>
+        </div>
+    </section>
+
+    <!-- Tentang Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-image">
+                    <img src="gambar2.jpg" alt="Tim Isesw" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80'">
+                    <div class="about-exp">
+                        <span class="exp-number">5+</span>
+                        <span class="exp-text">Tahun<br>Berkarya</span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-tag">Tentang Isesw</span>
+                    <h2>Mitra <span class="orange">Digital</span> Terpercaya Anda</h2>
+                    <p class="about-desc">PT Ises Solusi Teknologi (Isesw) adalah perusahaan pengembang perangkat lunak yang berbasis di Bitung, Sulawesi Utara. Kami berkomitmen untuk memberikan solusi digital inovatif yang membantu bisnis berkembang di era digital.</p>
+                    
+                    <div class="about-points">
+                        <div class="point">
+                            <i class="fas fa-medal"></i>
+                            <div class="point-text">
+                                <h4>Berkualitas</h4>
+                                <p>Mengutamakan kualitas dalam setiap baris kode yang kami tulis</p>
+                            </div>
+                        </div>
+                        <div class="point">
+                            <i class="fas fa-clock"></i>
+                            <div class="point-text">
+                                <h4>Tepat Waktu</h4>
+                                <p>Komitmen pada deadline tanpa mengorbankan kualitas</p>
+                            </div>
+                        </div>
+                        <div class="point">
+                            <i class="fas fa-headset"></i>
+                            <div class="point-text">
+                                <h4>Dukungan Penuh</h4>
+                                <p>Layanan after-sales dan maintenance yang responsif</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-cta">
+                        <a href="#contact" class="btn btn-primary">Diskusi dengan Tim</a>
+                        <a href="https://www.youtube.com/@kitakoding" class="btn btn-outline" target="_blank">
+                            <i class="fab fa-youtube"></i> YouTube Kami
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyek Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Portofolio</span>
+                <h2>Proyek <span class="orange">Terbaru</span></h2>
+                <p>Beberapa proyek yang telah kami selesaikan untuk berbagai klien</p>
+            </div>
+            <div class="projects-grid" id="projectsGrid"></div>
+            <div class="projects-footer">
+                <a href="https://wa.me/6285240344441" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Mulai Proyek Anda
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Hubungi Kami</span>
+                <h2>Diskusikan <span class="orange">Kebutuhan</span> Anda</h2>
+                <p>Tim kami siap membantu mewujudkan ide Anda menjadi solusi digital yang nyata</p>
+            </div>
+
+            <!-- Contact Cards Row -->
+            <div class="contact-cards-row">
+                <div class="contact-card-item">
+                    <div class="card-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h4>WhatsApp</h4>
+                    <p class="contact-detail">+62 852-4034-4441</p>
+                    <p class="contact-info">Respons cepat 24/7</p>
+                    <a href="https://wa.me/6285240344441" class="card-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chat Sekarang
+                    </a>
+                </div>
+
+                <div class="contact-card-item">
+                    <div class="card-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h4>Email</h4>
+                    <p class="contact-detail">info@ises-solusi.id</p>
+                    <p class="contact-info">Balas dalam 1x24 jam</p>
+                    <a href="mailto:info@ises-solusi.id" class="card-btn">
+                        <i class="fas fa-envelope"></i> Kirim Email
+                    </a>
+                </div>
+
+                <div class="contact-card-item">
+                    <div class="card-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h4>YouTube</h4>
+                    <p class="contact-detail">@kitakoding</p>
+                    <p class="contact-info">Tutorial programming gratis</p>
+                    <a href="https://www.youtube.com/@kitakoding" class="card-btn" target="_blank">
+                        <i class="fab fa-youtube"></i> Subscribe
+                    </a>
+                </div>
+
+                <div class="contact-card-item">
+                    <div class="card-icon">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <h4>Facebook</h4>
+                    <p class="contact-detail">/isesw</p>
+                    <p class="contact-info">Update info terbaru</p>
+                    <a href="https://www.facebook.com/isesw" class="card-btn" target="_blank">
+                        <i class="fab fa-facebook"></i> Kunjungi
+                    </a>
+                </div>
+            </div>
+
+            <!-- Map & Location Section -->
+            <div class="location-section">
+                <div class="location-header">
+                    <div style="display: flex; align-items: center;">
+                        <div class="location-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="location-title">
+                            <h3>Kantor Pusat</h3>
+                            <p>Bitung, Sulawesi Utara</p>
+                        </div>
+                    </div>
+                    <div class="location-hours">
+                        <i class="fas fa-clock"></i>
+                        <span>Senin - Minggu: 07:00 - 21:00 WITA</span>
+                    </div>
+                </div>
+
+                <div class="map-wrapper">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63816.71167580937!2d125.10665965!3d1.44510295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32870a95df6309dd%3A0x21d86e4847556add!2sBitung%2C%20Kota%20Bitung%2C%20Sulawesi%20Utara!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                    
+                    <div class="map-overlay">
+                        <a href="https://maps.app.goo.gl/2ZqUHXf7D9ZbcKca6" target="_blank" class="map-button">
+                            <i class="fas fa-directions"></i>
+                            Buka di Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="logo.png" alt="Isesw" class="footer-logo" onerror="this.src='https://placehold.co/80x80/f97316/ffffff?text=IS'">
+                    <p>PT Ises Solusi Teknologi menghadirkan solusi digital inovatif untuk membantu bisnis Anda berkembang di era digital.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/isesw" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/@kitakoding" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://wa.me/6285240344441" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Layanan</h4>
+                    <ul>
+                        <li><a href="#services">Pengembangan Web</a></li>
+                        <li><a href="#services">Aplikasi Mobile</a></li>
+                        <li><a href="#services">Konsultasi IT</a></li>
+                        <li><a href="#services">Training IT</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Perusahaan</h4>
+                    <ul>
+                        <li><a href="#about">Tentang</a></li>
+                        <li><a href="#projects">Proyek</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                        <li><a href="https://www.youtube.com/@kitakoding" target="_blank">YouTube</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontak Cepat</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fab fa-whatsapp"></i> +62 852-4034-4441</li>
+                        <li><i class="fas fa-envelope"></i> info@ises-solusi.id</li>
+                        <li><i class="fas fa-clock"></i> Senin - Minggu (24/7)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> PT Ises Solusi Teknologi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Set Current Year in Footer
+            const yearSpan = document.getElementById('currentYear');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+
+            // 2. Mobile Menu Toggle
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navbar = document.getElementById('navbar');
+            const navLinks = document.querySelectorAll('.navbar a');
+
+            if (mobileMenu && navbar) {
+                mobileMenu.addEventListener('click', () => {
+                    navbar.classList.toggle('active');
+                    const icon = mobileMenu.querySelector('i');
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                });
+
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        navbar.classList.remove('active');
+                        const icon = mobileMenu.querySelector('i');
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    });
+                });
+            }
+
+            // 3. Header Scroll Effect & Active Nav Highlight
+            const header = document.getElementById('header');
+            const sections = document.querySelectorAll('section');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 120;
+                    if (window.scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // 4. Render Data Layanan (servicesGrid)
+            const servicesData = [
+                {
+                    icon: 'fas fa-laptop-code',
+                    title: 'Pengembangan Web Enterprise',
+                    desc: 'Pembuatan sistem informasi berbasis web, portal perusahaan, e-commerce, dan ERP kustom yang cepat, aman, dan skalabel.',
+                    tags: ['React', 'Node.js', 'Laravel', 'PostgreSQL']
+                },
+                {
+                    icon: 'fas fa-mobile-alt',
+                    title: 'Aplikasi Mobile (Android & iOS)',
+                    desc: 'Pengembangan aplikasi mobile lintas platform dengan performa native dan antarmuka modern yang ramah pengguna.',
+                    tags: ['Flutter', 'React Native', 'Kotlin', 'Swift']
+                },
+                {
+                    icon: 'fas fa-network-wired',
+                    title: 'Integrasi Sistem & API',
+                    desc: 'Menghubungkan berbagai sistem operasional, payment gateway, dan layanan cloud agar alur kerja perusahaan berjalan otomatis.',
+                    tags: ['REST API', 'GraphQL', 'Microservices', 'AWS']
+                },
+                {
+                    icon: 'fas fa-shield-alt',
+                    title: 'Keamanan Siber & Audit IT',
+                    desc: 'Perlindungan infrastruktur digital, enkripsi data sensitif, serta audit keamanan sistem sesuai standar ISO 27001.',
+                    tags: ['Security Audit', 'ISO 27001', 'Cloud Backup']
+                },
+                {
+                    icon: 'fas fa-chalkboard-teacher',
+                    title: 'Konsultasi & Training IT',
+                    desc: 'Pendampingan transformasi digital perusahaan serta pelatihan teknis pemrograman intensif bagi tim internal Anda.',
+                    tags: ['IT Strategy', 'Corporate Training', 'Mentoring']
+                },
+                {
+                    icon: 'fas fa-tools',
+                    title: 'Maintenance & Dukungan 24/7',
+                    desc: 'Pemeliharaan server berkala, pemantauan performa sistem 99.9% uptime, dan dukungan teknis responsif kapan pun dibutuhkan.',
+                    tags: ['DevOps', 'Server Monitoring', 'SLA Support']
+                }
+            ];
+
+            const servicesGrid = document.getElementById('servicesGrid');
+            if (servicesGrid) {
+                servicesGrid.innerHTML = servicesData.map(service => `
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="${service.icon}"></i>
+                        </div>
+                        <h3>${service.title}</h3>
+                        <p>${service.desc}</p>
+                        <div class="service-tags">
+                            ${service.tags.map(tag => `<span>${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // 5. Render Data Proyek (projectsGrid)
+            const projectsData = [
+                {
+                    category: 'Enterprise ERP',
+                    icon: 'fas fa-ship',
+                    gradient: 'linear-gradient(135deg, #0f172a, #1e3a8a)',
+                    title: 'Sistem Manajemen Logistik & Kepelabuhanan',
+                    desc: 'Platform pelacakan kargo real-time, manajemen inventaris gudang, dan penagihan otomatis untuk perusahaan logistik di Bitung.',
+                    tech: ['React', 'Node.js', 'PostgreSQL', 'AWS']
+                },
+                {
+                    category: 'Mobile App',
+                    icon: 'fas fa-hospital-user',
+                    gradient: 'linear-gradient(135deg, #ea580c, #f97316)',
+                    title: 'Aplikasi Layanan Kesehatan & Rekam Medis',
+                    desc: 'Aplikasi mobile reservasi pasien, telekonsultasi dokter, dan integrasi rekam medis elektronik untuk jaringan klinik.',
+                    tech: ['Flutter', 'Python', 'REST API', 'Firebase']
+                },
+                {
+                    category: 'E-Government',
+                    icon: 'fas fa-landmark',
+                    gradient: 'linear-gradient(135deg, #065f46, #10b981)',
+                    title: 'Portal Pelayanan Publik Terpadu',
+                    desc: 'Sistem digitalisasi perizinan dan pelaporan masyarakat berbasis web dengan tanda tangan elektronik dan notifikasi WhatsApp.',
+                    tech: ['Next.js', 'Laravel', 'MySQL', 'WhatsApp API']
+                }
+            ];
+
+            const projectsGrid = document.getElementById('projectsGrid');
+            if (projectsGrid) {
+                projectsGrid.innerHTML = projectsData.map(project => `
+                    <div class="project-card">
+                        <div class="project-banner" style="background: ${project.gradient};">
+                            <span class="project-category">${project.category}</span>
+                            <i class="${project.icon}"></i>
+                        </div>
+                        <div class="project-body">
+                            <h3>${project.title}</h3>
+                            <p>${project.desc}</p>
+                            <div class="project-tech">
+                                ${project.tech.map(t => `<span>${t}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        });
+    </script>
+</body>
+</html>
